@@ -30,17 +30,17 @@ public class LoginManagerClass {
      */
     public ClientFacade login(String email, String password, ClientType clientType){
         switch (clientType) {
-            case Company -> {
+            case Company: {
                 CompanyServiceImpl companyFacade = ctx.getBean(CompanyServiceImpl.class);
                 if (companyFacade.login(email, password))
                     return companyFacade;
             }
-            case Customer -> {
+            case Customer: {
                 CustomerServiceImpl customerFacade = ctx.getBean(CustomerServiceImpl.class);
                 if (customerFacade.login(email, password))
                     return customerFacade;
             }
-            case Administrator -> {
+            case Administrator: {
                 AdminServiceImpl adminFacade = ctx.getBean(AdminServiceImpl.class);
                 if (email.equals(adminEmail) && password.equals(adminPassword))
                     return adminFacade;
