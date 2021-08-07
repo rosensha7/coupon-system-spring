@@ -4,7 +4,7 @@
 This is the backend code of an online coupon store. It's implemented with Spring Boot framework and written in Java.
 The store was created as part of the main project in the John Bryce Full-Stack Java Development course.
 
-## Technologies for making this project
+## Technologies used in the making this project
 - Java
 - Spring Boot
 - Hibernate (with Spring JPA)
