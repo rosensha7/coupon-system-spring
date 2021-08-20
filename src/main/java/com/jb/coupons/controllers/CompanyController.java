@@ -57,6 +57,25 @@ public class CompanyController {
     }
 
     @CrossOrigin
+    @GetMapping("details")
+    public ResponseEntity<?> getCompanyDetails(@RequestHeader(name="Authorization") String token) throws CompanyException {
+        token = JWTutil.trimToken(token);
+        JWTutil.extractClientType(token);
+        UserDetails ud = UserDetails.builder()
+                .userEmail(JWTutil.extractEmail(token))
+                .clientType(JWTutil.extractClientType(token))
+                .build();
+        if(JWTutil.validateToken(token))
+        {
+            return ResponseEntity.ok()
+                    .header("Authorization", JWTutil.generateToken(ud))
+                    .body(companyService.getCompanyDetails());
+        }
+        else
+            throw new CompanyException("No token match.");
+    }
+
+    @CrossOrigin
     @GetMapping("coupon/{id}")
     public ResponseEntity<?> getOneCoupon(@RequestHeader(name="Authorization") String token, @PathVariable int id) throws CompanyException {
         token = JWTutil.trimToken(token);

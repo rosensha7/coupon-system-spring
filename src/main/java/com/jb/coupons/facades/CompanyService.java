@@ -80,7 +80,7 @@ public interface CompanyService {
      * @return the company details
      * @throws Exception the exception
      */
-    Company getCompanyDetails() throws Exception;
+    Company getCompanyDetails() throws CompanyException;
 
     List<Company> getAllCompanies() throws Exception;
 

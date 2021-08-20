@@ -119,7 +119,7 @@ public class CompanyServiceImpl extends ClientFacade implements CompanyService {
         return companyCoupons;
     }
 
-    public Company getCompanyDetails() throws Exception {
+    public Company getCompanyDetails() throws CompanyException {
         if(companyRepository.existsById(companyId))
             return companyRepository.findById(companyId);
         else
